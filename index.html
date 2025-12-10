@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALUE RIDE - Smarter Way to Choose Your Ride</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-car"></i>
+                <span>VALUE RIDE</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="nav-link" onclick="showPage('home')">Home</a>
+                <a href="#" class="nav-link" onclick="showPage('cars')">Available Cars</a>
+                <a href="#contact" class="nav-link">Contact Us</a>
+            </div>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">VALUE RIDE</h1>
+                    <p class="hero-subtitle">Smarter Way to Choose Your Ride</p>
+                    <p class="hero-description">Your trusted platform for choosing the perfect used car based on data-driven insights.</p>
+                    <button class="cta-button" onclick="showPage('cars')">
+                        <span>Explore Available Cars</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="hero-visual">
+                    <div class="car-graphic">
+                        <i class="fas fa-car"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="about">
+            <div class="container">
+                <h2 class="section-title">About Us</h2>
+                <p class="about-text">We help buyers find the right used car using real data such as mileage, year, fuel type, engine specs, price, and more.</p>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Why Choose VALUE RIDE?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h3>Accurate Model-based Filtering</h3>
+                        <p>Advanced filtering system to find exactly what you're looking for</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI-powered Car Price Insights</h3>
+                        <p>Smart pricing analysis using machine learning algorithms</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Transparent Car Information</h3>
+                        <p>Complete transparency with all car details visible upfront</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>Clean UI and Easy Navigation</h3>
+                        <p>Intuitive interface designed for seamless user experience</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Real Dataset-driven Car Listings</h3>
+                        <p>All listings backed by comprehensive real-world data</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>No Hidden Details</h3>
+                        <p>Everything visible openly - complete transparency guaranteed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <a href="mailto:shrinithivijayakumar11@gmail.com">shrinithivijayakumar11@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <a href="tel:7010366061">7010366061</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Cars Page -->
+    <div id="cars-page" class="page">
+        <div class="cars-container">
+            <!-- Filter Panel -->
+            <div class="filter-panel">
+                <div class="filter-header">
+                    <h3><i class="fas fa-filter"></i> Filters</h3>
+                    <button class="clear-filters" onclick="clearAllFilters()">Clear All</button>
+                </div>
+                
+                <!-- Search -->
+                <div class="filter-group">
+                    <label>Search Car Model</label>
+                    <input type="text" id="search-input" placeholder="Type car model..." oninput="applyFilters()">
+                </div>
+
+                <!-- Approximate Search Toggle -->
+                <div class="filter-group">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="approximate-search" onchange="applyFilters()">
+                        <span class="toggle-slider"></span>
+                        <span>Approximate Search</span>
+                    </label>
+                    <small>Expands ranges for flexible matching</small>
+                </div>
+
+                <!-- Fuel Type -->
+                <div class="filter-group">
+                    <label>Fuel Type</label>
+                    <select id="fuel-filter" onchange="applyFilters()">
+                        <option value="">All Types</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="CNG">CNG</option>
+                    </select>
+                </div>
+
+                <!-- Transmission -->
+                <div class="filter-group">
+                    <label>Transmission</label>
+                    <select id="transmission-filter" onchange="applyFilters()">
+                        <option value="">All Types</option>
+                        <option value="Manual">Manual</option>
+                        <option value="Automatic">Automatic</option>
+                    </select>
+                </div>
+
+                <!-- Price Range -->
+                <div class="filter-group">
+                    <label>Price Range</label>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" onclick="setPriceRange(0, 200000)">Under ₹2L</button>
+                        <button class="preset-btn" onclick="setPriceRange(200000, 500000)">₹2L-₹5L</button>
+                        <button class="preset-btn" onclick="setPriceRange(500000, 1000000)">₹5L-₹10L</button>
+                        <button class="preset-btn" onclick="setPriceRange(1000000, 9999999)">₹10L+</button>
+                    </div>
+                    <div class="range-inputs">
+                        <input type="number" id="price-min" placeholder="Min Price" oninput="applyFilters()">
+                        <input type="number" id="price-max" placeholder="Max Price" oninput="applyFilters()">
+                    </div>
+                </div>
+
+                <!-- Year Range -->
+                <div class="filter-group">
+                    <label>Year Range</label>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" onclick="setYearRange(2000, 2003)">2000-2003</button>
+                        <button class="preset-btn" onclick="setYearRange(2004, 2008)">2004-2008</button>
+                        <button class="preset-btn" onclick="setYearRange(2009, 2015)">2009-2015</button>
+                        <button class="preset-btn" onclick="setYearRange(2016, 2024)">2016-2024</button>
+                    </div>
+                    <div class="range-inputs">
+                        <input type="number" id="year-min" placeholder="From Year" oninput="applyFilters()">
+                        <input type="number" id="year-max" placeholder="To Year" oninput="applyFilters()">
+                    </div>
+                </div>
+
+                <!-- KM Driven Range -->
+                <div class="filter-group">
+                    <label>KM Driven Range</label>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" onclick="setKMRange(0, 20000)">0-20k</button>
+                        <button class="preset-btn" onclick="setKMRange(20000, 50000)">20-50k</button>
+                        <button class="preset-btn" onclick="setKMRange(50000, 80000)">50-80k</button>
+                        <button class="preset-btn" onclick="setKMRange(80000, 999999)">80k+</button>
+                    </div>
+                    <div class="range-inputs">
+                        <input type="number" id="km-min" placeholder="Min KM" oninput="applyFilters()">
+                        <input type="number" id="km-max" placeholder="Max KM" oninput="applyFilters()">
+                    </div>
+                </div>
+
+                <!-- Download Section -->
+                <div class="filter-group download-section">
+                    <label>Export Data</label>
+                    <button class="download-btn" onclick="downloadFilteredCSV()">
+                        <i class="fas fa-download"></i> Download Filtered Cars (CSV)
+                    </button>
+                    <button class="download-btn" onclick="downloadAllVisualizations()">
+                        <i class="fas fa-chart-bar"></i> Download All Charts (PDF)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Results Header -->
+                <div class="results-header">
+                    <h2 id="results-count">Loading cars...</h2>
+                    <div class="view-toggle">
+                        <button class="view-btn active" onclick="setView('grid')" data-view="grid">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="view-btn" onclick="setView('list')" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cars Grid -->
+                <div id="cars-grid" class="cars-grid">
+                    <!-- Cars will be populated by JavaScript -->
+                </div>
+
+                <!-- Pagination -->
+                <div id="pagination" class="pagination">
+                    <!-- Pagination will be populated by JavaScript -->
+                </div>
+
+                <!-- Visualization Section -->
+                <div class="visualization-section">
+                    <h2>Data Visualizations</h2>
+                    <div class="charts-container">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Price Distribution</h3>
+                                <button class="download-chart-btn" onclick="downloadChart('price-chart', 'Price_Distribution')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                            <canvas id="price-chart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Fuel Type Distribution</h3>
+                                <button class="download-chart-btn" onclick="downloadChart('fuel-chart', 'Fuel_Type_Distribution')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                            <canvas id="fuel-chart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Year vs Price Trend</h3>
+                                <button class="download-chart-btn" onclick="downloadChart('year-price-chart', 'Year_vs_Price_Trend')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                            <canvas id="year-price-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Car Details Modal -->
+    <div id="car-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Car Details</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="car-image-placeholder">
+                    <i class="fas fa-car"></i>
+                    <p>Car Image Placeholder</p>
+                </div>
+                <div id="car-details" class="car-details">
+                    <!-- Details will be populated by JavaScript -->
+                </div>
+                <div class="modal-actions">
+                    <button class="action-btn" onclick="downloadCarPDF()">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </button>
+                    <button class="action-btn" onclick="downloadCarCSV()">
+                        <i class="fas fa-file-csv"></i> Download CSV
+                    </button>
+                    <div class="contact-actions">
+                        <a href="mailto:shrinithivijayakumar11@gmail.com" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="tel:7010366061" class="contact-btn">
+                            <i class="fas fa-phone"></i> Call
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Loading VALUE RIDE...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script>
+        // Wait for DOM and libraries to load
+        window.addEventListener('DOMContentLoaded', function() {
+            // Check if jsPDF is loaded
+            if (typeof window.jspdf === 'undefined') {
+                console.error('jsPDF library failed to load');
+            } else {
+                console.log('jsPDF library loaded successfully');
+            }
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
